@@ -60,7 +60,6 @@ def solve_via_simulated_annealing(
         chance = np.power(np.exp(1),
                           ( - number_of_conflicts(G, new_colors_best) + (number_of_conflicts(G, cur_colors)) / temperature))
 
-        # print(chance)
         if number_of_conflicts(G, cur_colors) >= number_of_conflicts(G, new_colors_best):
             cur_colors = next_colors_best
         elif chance < np.random.rand():
@@ -68,7 +67,6 @@ def solve_via_simulated_annealing(
             cur_colors = new_colors_best
 
         temperature = decrease_temperature(temperature)
-        # print(temperature)
 
     return loss_history
 
