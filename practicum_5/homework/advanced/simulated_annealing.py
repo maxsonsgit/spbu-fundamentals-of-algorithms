@@ -79,6 +79,6 @@ if __name__ == "__main__":
     initial_colors = np.random.randint(low=0, high=n_max_colors - 1, size=len(G.nodes))
 
     loss_history = solve_via_simulated_annealing(
-        G, n_max_colors, initial_colors, n_max_iters, temperature
+        G, n_max_colors, initial_colors, n_max_iters
     )
     plot_loss_history(loss_history)
