@@ -2,7 +2,6 @@ from collections import defaultdict
 from dataclasses import dataclass
 import os
 import yaml
-import time
 
 import numpy as np
 from numpy.typing import NDArray
@@ -43,7 +42,7 @@ def lu(A: NDArray, permute: bool) -> tuple[NDArray, NDArray, NDArray]:
 
 def solve(L: NDArray, U: NDArray, P: NDArray, b: NDArray) -> NDArray:
     n = P.shape[0]
-    x = np.zeros((n, 1))
+    x = np.zeros((n,1))
     b_permuted = P.dot(b)
 
     y = np.zeros(n)
@@ -57,12 +56,15 @@ def solve(L: NDArray, U: NDArray, P: NDArray, b: NDArray) -> NDArray:
 
 
 def run_test_cases(n_runs: int, path_to_homework: str) -> dict[str, Performance]:
+    import time
     matrix_filenames = []
     performance_by_matrix = defaultdict(Performance)
     with open(os.path.join(path_to_homework, "matrices.yaml"), "r") as f:
         matrix_filenames = yaml.safe_load(f)
     for i, matrix_filename in enumerate(matrix_filenames):
         print(f"Processing matrix {i+1} out of {len(matrix_filenames)}")
+        # if i == 3:
+        #     return performance_by_matrix
         A = (
             scipy.io.mmread(os.path.join(path_to_homework, "matrices", matrix_filename))
             .todense()
@@ -86,7 +88,9 @@ def run_test_cases(n_runs: int, path_to_homework: str) -> dict[str, Performance]
 
 if __name__ == "__main__":
     n_runs = 10
+    # n_runs = 1
     path_to_homework = os.path.join("practicum_6", "homework", "advanced")
+    # path_to_homework = "C:\\Projects\\spbu-fundamentals-of-algorithms\\practicum_6\\homework\\advanced"
     performance_by_matrix = run_test_cases(
         n_runs=n_runs, path_to_homework=path_to_homework
     )
