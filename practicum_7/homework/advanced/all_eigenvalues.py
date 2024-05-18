@@ -18,7 +18,6 @@ class Performance:
     relative_error: float = 0.0
 
 
-
 def qr(A: np.array):
     m, n = A.shape
     Q = A.copy()
@@ -56,6 +55,8 @@ def run_test_cases(
         matrix_filenames = yaml.safe_load(f)
     for i, matrix_filename in enumerate(matrix_filenames):
         print(f"Processing matrix {i+1} out of {len(matrix_filenames)}")
+        # if i == 2:
+        #     return performance_by_matrix
         A = scipy.io.mmread(os.path.join(path_to_matrices, matrix_filename)).todense().A
         perf = performance_by_matrix[matrix_filename]
         t1 = time.time()
