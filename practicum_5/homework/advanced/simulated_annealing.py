@@ -1,5 +1,3 @@
-import random
-
 import numpy as np
 from numpy.typing import NDArray
 import networkx as nx
@@ -34,10 +32,8 @@ def tweak(G: nx.Graph, colors: NDArrayInt, n_max_colors: int):
     return new_colors
 
 
-
-
 def solve_via_simulated_annealing(
-    G: nx.Graph, n_max_colors: int, initial_colors: NDArrayInt, n_iters: int, temperature: int
+    G: nx.Graph, n_max_colors: int, initial_colors: NDArrayInt, n_iters: int, temperature=10
 ):
     loss_history = np.zeros((n_iters,), dtype=np.int_)
 
@@ -63,14 +59,12 @@ def solve_via_simulated_annealing(
         if number_of_conflicts(G, cur_colors) >= number_of_conflicts(G, new_colors_best):
             cur_colors = next_colors_best
         elif chance < np.random.rand():
-            print(chance)
+            # print(chance)
             cur_colors = new_colors_best
 
         temperature = decrease_temperature(temperature)
 
     return loss_history
-
-
 
 
 if __name__ == "__main__":
