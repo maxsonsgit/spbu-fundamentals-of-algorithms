@@ -2,21 +2,23 @@ from typing import Any
 
 import networkx as nx
 import numpy as np
+from queue import Queue
+
 
 
 def bfs(G, s, t, parent):
     visited = [False] * len(G.nodes())
-    queue = set()
+    queue = Queue()
 
     visited[int(s)] = True
-    queue.add(s)
-    while queue:
-        node = int(queue.pop())
+    queue.put(s)
+    while not queue.empty():
+        node = int(queue.get())
         for neighbour in G.neighbors(str(node)):
             if not visited[int(neighbour)]:
                 visited[int(neighbour)] = True
                 parent[int(neighbour)] = node
-                queue.add(neighbour)
+                queue.put(neighbour)
     return visited[t]
 
 
@@ -45,6 +47,7 @@ def max_flow(G: nx.Graph, s: Any, t: Any) -> int:
             G.add_edge(str(end), str(parent[end]), weight=0)
             G[str(end)][str(parent[end])]["weight"] += min_flow
             end = parent[end]
+
     return value
 
 

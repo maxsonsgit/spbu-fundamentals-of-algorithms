@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f4d7cd8-e59f-47e8-a1fd-d819af9acdb4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/practicum_5/graph_coloring.py" beforeDir="false" afterPath="$PROJECT_DIR$/practicum_5/graph_coloring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practicum_3/homework/advanced/max_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/practicum_3/homework/advanced/max_flow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,5 +57,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/practicum_3/homework/advanced/max_flow.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
